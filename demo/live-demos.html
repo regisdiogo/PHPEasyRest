@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" id="PHPEasyRest">
+<head>
+<title>PHP Easy Rest - Creating powerful PHP REST application</title>
+<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div id="logo">&nbsp;</div>
+            <hgroup>
+                <h1>PHP Easy Rest</h1>
+                <h2>Creating powerful PHP REST application</h2>
+            </hgroup>
+        </div>
+    </header>
+    <div class="wrapper">
+        <article>
+            <nav>
+                <ul>
+                    <li class="selected">
+                        <div>
+                            <a href="index.html" class="nav-link">Home</a>
+                         </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="live-demos.html" class="nav-link selected">Live demos</a>
+                         </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="contact.html" class="nav-link">Contact</a>
+                         </div>
+                    </li>
+                </ul>
+            </nav>
+            <div id="main-content">
+            <h1>
+                <strong>PHP Easy Rest</strong> is a lightweight library that makes it easy<br /> to build RESTful applications.
+            </h1>
+            <h3>
+                Here you can find some live demos from <strong>PHP Easy Rest</strong>.
+            </h3>
+            <fieldset>
+                <legend>1. Hello world test</legend>
+                <form action="../helloworld" method="post">
+                    <label>Your message</label>
+                    <input type="text" id="your-message" name="your-message" />
+                    <input type="button" value="Click" class="btn-test-1" />
+                    <div class="result"></div>
+                </form>
+                <p>
+                    <a href="javascript:void(0);" class="show-source-code">View source code</a>
+                    <a href="javascript:void(0);" class="hide-source-code" style="display: none;">Hide source code</a>
+                </p>
+                <div class="source-code" style="display: none;">
+<pre>
+<code>
+<span class="php-title">HelloWorldAction.php</span>
+<span class="php-red">&lt;?php</span>
+<span class="php-keyword">namespace</span> action;
+<span class="php-keyword">if</span> (!defined(<span class="php-string">'ROOT_PATH'</span>)) <span class="php-keyword">die</span>(<span class="php-string">'Not allowed'</span>);
+<span class="php-doc">/**
+ * @Route(mapper="/helloworld",method="showMessage",type="POST")
+ */</span>
+<span class="php-keyword">class</span> HelloWorldAction <span class="php-keyword">extends</span> \core\BaseAction {
+    <span class="php-keyword">public function</span> showMessage($args) {
+        $hello = <span class="php-string">'This is your message: "'</span>.$args[<span class="php-string">'your-message'</span>].'".';
+        <span class="php-keyword">return</span> $this-&gt;makeResponseJson(<span class="php-keyword">array</span>(<span class="php-string">'message'</span>=&gt;$hello));
+    }
+}
+<span class="php-red">?&gt;</span>
+</code>
+</pre>
+<pre>
+<code>
+<span class="php-title">Script.js</span>
+<span class="php-keyword">var</span> trigger = $(<span class="php-string">'.btn-test-1'</span>);
+trigger.click(<span class="php-keyword">function</span>() {
+    $.ajax({
+        type : trigger.parent(<span class="php-string">'form'</span>).attr(<span class="php-string">'method'</span>),
+        url : trigger.parent(<span class="php-string">'form'</span>).attr(<span class="php-string">'action'</span>),
+        data : trigger.parent(<span class="php-string">'form'</span>).serialize(),
+        success : <span class="php-keyword">function</span>(data) {
+            <span class="php-keyword">var</span> result = <span class="php-string">'Json response: &lt;br /&gt;'</span>;
+            jQuery.each(data, <span class="php-keyword">function</span>(key, value) {
+                result += key + <span class="php-string">': '</span> + value + <span class="php-string">'&lt;br /&gt;'</span>;
+            });
+            trigger.parent(<span class="php-string">'form'</span>).children(<span class="php-string">'.result'</span>).html(result);
+        }
+    });
+});
+</code>
+</pre>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>2. </legend>
+            </fieldset>
+            <p style="text-align: center;">
+                <a href="http://github.com/regisdiogo/"><img src="images/download-button-orange.png" /></a>
+            </p>
+            </div>
+        </article>
+    </div>
+    <footer>
+        <span id="footer-separator">&nbsp;</span>
+        <br />
+        <br />
+        <div class="wrapper">
+            Footer
+        </div>
+    </footer>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
